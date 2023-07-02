@@ -1,0 +1,61 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+s 0 -> s 2 >
+s 1 -> s 3 >
+s < -> retLeftLeft < <
+findLes 0 -> findLes 0 >
+findLes 1 -> findLes 1 >
+findLes < -> checkLen < >
+checkLen 0 -> checkLen 0 >
+checkLen 1 -> checkLen 1 >
+checkLen 4 -> backAndMark 4 <
+checkLen 5 -> backAndMark 5 <
+checkLen _ -> backAndMark _ <
+backAndMark 0 -> retLeft 4 <
+backAndMark 1 -> retLeft 5 <
+backAndMark < -> rj < ^
+retLeft 0 -> retLeft 0 <
+retLeft 1 -> retLeft 1 <
+retLeft < -> retLeftLeft < <
+retLeftLeft 2 -> findLes 0 >
+retLeftLeft 3 -> findLes 1 >
+retLeftLeft 0 -> retLeftLeft 0 <
+retLeftLeft 1 -> retLeftLeft 1 <
+retLeftLeft _ -> mainCheck _ >
+mainCheck 0 -> mainCheck 0 >
+mainCheck 1 -> mainCheck 1 >
+mainCheck < -> isLonger < >
+isLonger 0 -> ac 0 ^
+isLonger 1 -> ac 1 ^
+isLonger 4 -> goBack 4 <
+isLonger 5 -> goBack 5 <
+goBack < -> goBack < <
+goBack 0 -> goBack 0 <
+goBack 1 -> goBack 1 <
+goBack _ -> finalCheck _ >
+finalCheck 0 -> isZer _ >
+finalCheck 1 -> isOne _ >
+finalCheck < -> rj < ^
+isZer 0 -> isZer 0 >
+isZer 1 -> isZer 1 >
+isZer < -> isZer < >
+isZer 4 -> nextDig 6 <
+isZer 5 -> ac 5 ^
+isZer 6 -> isZer 6 >
+isZer 7 -> isZer 7 >
+isOne 0 -> isOne 0 >
+isOne 1 -> isOne 1 >
+isOne < -> isOne < >
+isOne 4 -> rj 4 ^
+isOne 5 -> nextDig 7 <
+isOne 6 -> isOne 6 >
+isOne 7 -> isOne 7 >
+nextDig 6 -> nextDig 6 <
+nextDig 7 -> nextDig 7 <
+nextDig < -> nextDig < <
+nextDig 0 -> nextDig 0 <
+nextDig 1 -> nextDig 1 <
+nextDig _ -> finalCheck _ >
+

@@ -1,0 +1,29 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+s 0 -> s 0 >
+s 1 -> s 1 >
+s + -> mns + >
+mns 1 -> mns 1 >
+mns 0 -> mns 0 >
+mns _ -> mnsOne _ <
+mnsOne 1 -> pls 0 <
+mnsOne 0 -> mnsOne 1 <
+mnsOne + -> clr _ >
+pls 0 -> pls 0 <
+pls 1 -> pls 1 <
+pls + -> plsOne + <
+plsOne 0 -> s 1 >
+plsOne 1 -> plsOne 0 <
+plsOne _ -> s 1 >
+clr 0 -> clr _ >
+clr 1 -> clr _ >
+clr _ -> ret _ <
+ret _ -> ret _ <
+ret 0 -> retBeg 0 <
+ret 1 -> retBeg 1 <
+retBeg 0 -> retBeg 0 <
+retBeg 1 -> retBeg 1 <
+retBeg _ -> ac _ >
+
